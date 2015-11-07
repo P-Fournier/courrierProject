@@ -11,4 +11,12 @@ public class Main {
 			inhabitants.add(new Inhabitant("inhabitant-"+i,city));
 		}
 	}
+	
+	/*
+	 * distribution du courrier sur k jours
+	 * 
+	 */
+	public void distribution(int k){
+		
+	}
 }
