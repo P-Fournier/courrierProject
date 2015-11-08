@@ -11,6 +11,7 @@ public abstract class Letter<C extends Content> implements Content{
 	protected Inhabitant sender;
 	protected City city;
 	protected C content;
+	protected double cost;
 	
 	public Letter(Inhabitant receiver, Inhabitant sender, City city, C content){
 		this.receiver = receiver;
@@ -21,5 +22,11 @@ public abstract class Letter<C extends Content> implements Content{
 	
 	public abstract String description();
 	
-
+	public void setCost(double cost){
+		this.cost = cost;
+	}
+	
+	public double getCost(){
+		return this.cost;
+	}
 }

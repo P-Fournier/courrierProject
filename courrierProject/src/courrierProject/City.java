@@ -20,6 +20,12 @@ public class City {
 		this.postbox = new ArrayList<Letter<Content>>();
 	}
 	
+	public void sendLetter(){
+		
+	}
 	
+	public void distributeLetter(){
+		
+	}
 	
 }
