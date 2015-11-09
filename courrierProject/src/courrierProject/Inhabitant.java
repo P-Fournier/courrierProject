@@ -28,4 +28,46 @@ public class Inhabitant {
 		this.city = city;
 		this.bankAccount = 5000;
 	}
+	
+	/**
+	 * debit amount on the bank account
+	 * @param int amount
+	 */
+	public void debit(int amount){
+		this.bankAccount-=amount;
+	}
+	
+	/**
+	 * credit amount on the bank account
+	 * @param int amount
+	 */
+	public void credit (int amount){
+		this.bankAccount+=amount;
+	}
+	
+	//getters and setters
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public String getName(){
+		return this.name;
+	}
+	
+	public void setCity(City city){
+		this.city=city;
+	}
+	
+	public City getCity(){
+		return this.city;
+	}
+	
+	public void setBankAccount(int n){
+		this.bankAccount = n;
+	}
+	
+	public int getBankAccount(){
+		return this.bankAccount;
+	}
 }
