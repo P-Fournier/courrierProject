@@ -1,14 +1,14 @@
 package Letter;
 
 import courrierProject.Inhabitant;
-import Content.Money;
+import Content.UrgentContent;
 
-public class PromissoryNote extends SimpleLetter<Money> {
-	
-	protected int amount ; // amount of money in the letter
+public class UrgentLetter<U extends UrgentContent> extends SpecialLetter<UrgentContent>{
 
-	public PromissoryNote(Inhabitant sender, Inhabitant receiver, Money content) {
+	public UrgentLetter(Inhabitant sender, Inhabitant receiver,
+			U content) {
 		super(sender, receiver, content);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
