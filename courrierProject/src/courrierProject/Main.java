@@ -5,6 +5,7 @@ import java.util.List;
 
 import Letter.Letter;
 
+
 public class Main {
 	public static void main (String [] args){
 		
@@ -20,9 +21,11 @@ public class Main {
 		
 		for (int i=0 ; i<=numberOfDays ; i++){
 			if (i!=numberOfDays){
+			
 				/*
 				 * create a list of inhabitants randomly choose
 				 */
+		
 				int randomNumberOfInhabitants = (int) (Math.random()*numberOfInhabitants);
 				List<Inhabitant> inhabitantsChoose = new ArrayList<Inhabitant>();
 				for (int j=0 ; j<randomNumberOfInhabitants ;j++){
@@ -32,6 +35,7 @@ public class Main {
 				/*
 				 * On remet les habitants choisit dans la liste d'habitants
 				 */
+		
 				inhabitants.addAll(inhabitantsChoose);
 				for (int j=0 ; j<inhabitantsChoose.size();j++){
 					/*
@@ -50,6 +54,8 @@ public class Main {
 				
 			}
 		}
-		 
+		
+		
+		
 	}
 }

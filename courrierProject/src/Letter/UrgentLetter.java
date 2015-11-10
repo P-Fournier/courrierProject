@@ -3,12 +3,11 @@ package Letter;
 import courrierProject.Inhabitant;
 import Content.UrgentContent;
 
-public class UrgentLetter<U extends UrgentContent> extends SpecialLetter<UrgentContent>{
+public class UrgentLetter<U extends UrgentContent> extends SpecialLetter<U>{
 
 	public UrgentLetter(Inhabitant sender, Inhabitant receiver,
 			U content) {
 		super(sender, receiver, content);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -21,6 +20,11 @@ public class UrgentLetter<U extends UrgentContent> extends SpecialLetter<UrgentC
 	public int getCost() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public String letterType() {
+		return "urgent letter";
 	}
 
 }

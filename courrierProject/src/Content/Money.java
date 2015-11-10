@@ -15,4 +15,9 @@ public class Money implements SimpleContent {
 		this.amount = amount;
 	}
 
+	@Override
+	public String description() {
+		return "money content ("+amount+")";
+	}
+
 }

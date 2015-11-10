@@ -1,12 +1,16 @@
 package Letter;
 
 import Content.Text;
-import courrierProject.Inhabitant;
 
-public class ThanksLetter extends TextLetter{
+public class ThanksLetter extends SimpleLetter{
 
-	public ThanksLetter(Inhabitant sender, Inhabitant receiver, Text content) {
-		super(sender, receiver, content);
+	public ThanksLetter( PromissoryNote recept) {
+		super(recept.getReceiver(),recept.getSender(), new Text("thanks for a "+recept.description()));
+	}
+	
+	@Override
+	public String letterType(){
+		return "thanks letter which is a "+super.letterType();
 	}
 
 }

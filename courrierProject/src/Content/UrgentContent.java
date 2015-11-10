@@ -1,5 +1,5 @@
 package Content;
 
-public interface UrgentContent extends RegisterableContent {
+public interface UrgentContent extends Content {
 
 }

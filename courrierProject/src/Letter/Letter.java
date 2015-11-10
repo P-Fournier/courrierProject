@@ -14,8 +14,6 @@ public abstract class Letter<C extends Content> {
 		this.content = content ;
 	}
 	
-	
-	
 	public Inhabitant getSender() {
 		return sender;
 	}
@@ -40,7 +38,19 @@ public abstract class Letter<C extends Content> {
 		this.content = content;
 	}
 
-
+	/**
+	 * give a description of the letter
+	 * @return description of the letter
+	 */
+	public String description(){
+		return this.letterType()+" whose content is a "+content.description();
+	}
+	
+	/**
+	 * give letter's class name
+	 * @return letter's class name
+	 */
+	public abstract String letterType ();
 
 	public abstract void doAction();
 	

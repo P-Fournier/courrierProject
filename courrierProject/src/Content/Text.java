@@ -15,6 +15,11 @@ public class Text implements SimpleContent {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	@Override
+	public String description() {
+		return "text content ("+content+")";
+	}
 	
 	
 

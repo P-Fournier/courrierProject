@@ -1,13 +1,13 @@
 package Letter;
 
-import Content.RegisterableContent;
+import Content.UrgentContent;
 import courrierProject.Inhabitant;
 
 
-public abstract class SpecialLetter<R extends RegisterableContent> extends Letter<RegisterableContent> {
+public abstract class SpecialLetter<U extends UrgentContent> extends Letter<U> {
 
 	public SpecialLetter(Inhabitant sender, Inhabitant receiver,
-			R content) {
+			U content) {
 		super(sender, receiver, content);
 	}
 

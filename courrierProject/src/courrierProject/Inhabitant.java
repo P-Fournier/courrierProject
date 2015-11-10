@@ -1,11 +1,14 @@
 package courrierProject;
 
 import Content.Money;
+import Content.RegisterableContent;
 import Content.Text;
+import Content.UrgentContent;
 import Letter.Letter;
 import Letter.PromissoryNote;
 import Letter.RegisteredLetter;
 import Letter.SimpleLetter;
+import Letter.UrgentLetter;
 
 public class Inhabitant {
 	
@@ -91,24 +94,80 @@ public class Inhabitant {
 	public void sendLetter (Letter<?> letter){
 		
 	}
-
-	public Letter<?> createRandomLetter(Inhabitant receiver) {
-		int randomChoose = (int) Math.random()* 2;
-		Letter <?> create ;
+	
+	/**
+	 * create a letter of a random type
+	 * @param receiver the letter's receiver
+	 * @return letter created
+	 */
+	public Letter<?> createRandomLetter(Inhabitant receiver){
+		int randomChoose = (int) Math.random()* 3;
 		switch(randomChoose) {
 		case 0:
-			boolean validAmount;
+			/*
+			 * create a simpleContentLetter
+			 */
+			return (Letter<?>)createSimpleContentLetter(receiver);
+		case 1:
+			/*
+			 * create a RegisteredLetter
+			 */
+			return (Letter<?>)createUrgentableLetter(receiver) ;
+		case 2:
+			/*
+			 * create a UrgentLetter
+			 */
+			return new UrgentLetter<UrgentContent>(this,receiver,createUrgentableLetter(receiver));
+		default:
+			throw new RuntimeException ("there is a probleme with a random number creation");
+		}
+	}
+	/**
+	 * create a letter that urgent letter could content
+	 * @param receiver the letter's receiver
+	 * @return the created letter
+	 */
+	public UrgentContent createUrgentableLetter(Inhabitant receiver) {
+		int randomChoose = (int) Math.random()* 2;
+		switch(randomChoose) {
+		case 0:
+			/*
+			 * create a simpleContentLetter
+			 */
+			return createSimpleContentLetter(receiver);
+		case 1:
+			/*
+			 * create a RegisteredLetter
+			 */
+			return new RegisteredLetter<RegisterableContent>(this,receiver,createSimpleContentLetter(receiver)) ;
+		default:
+			throw new RuntimeException ("there is a probleme with a random number creation");
+		}
+	}
+	
+	/**
+	 * create a letter that a registered letter could content
+	 * @param receiver the letter's receiver
+	 * @return the letter created
+	 */
+	public RegisterableContent createSimpleContentLetter(Inhabitant receiver){
+		int randomChoose = (int) Math.random()* 4;
+		switch (randomChoose){
+		case 0:
+			/*
+			 * create a promissory note
+			 */
 			int amount = (int) Math.random()*bankAccount;
 			Money money = new Money (amount);
-			create = new PromissoryNote (this,receiver,money);
-			return create ;
+			return new PromissoryNote (this,receiver,money);
 		case 1:
+			/*
+			 * create a simple letter
+			 */
 			Text text = new Text("blabla");
-			create = new SimpleLetter (this,receiver,text);
-			return create ;
-		case  2:
-			Letter <?> content = createRandomLetter(receiver);
-			create = new RegisteredLetter (this,receiver,content);
+			return new SimpleLetter (this,receiver,text);
+		default:
+			throw new RuntimeException ("there is a probleme with a random number creation");
 		}
 	}
 	

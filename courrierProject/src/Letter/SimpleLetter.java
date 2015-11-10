@@ -1,27 +1,18 @@
 package Letter;
 
 import courrierProject.Inhabitant;
-import Content.RegisterableContent;
-import Content.SimpleContent;
+import Content.Text;
 
-public class SimpleLetter<S extends SimpleContent> extends Letter<SimpleContent> implements RegisterableContent{
-	
-	protected int cost = 1 ; // sending cost of a simple letter
+public class SimpleLetter extends SimpleContentLetter<Text>{
 
-	public SimpleLetter(Inhabitant sender, Inhabitant receiver, S content) {
+	public SimpleLetter(Inhabitant sender, Inhabitant receiver, Text content) {
 		super(sender, receiver, content);
 	}
-
+	
 	@Override
-	public void doAction() {
-		// TODO Auto-generated method stub
-		
+	public String letterType() {
+		return "simple letter" ;
 	}
 
-	@Override
-	public int getCost() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

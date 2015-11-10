@@ -3,7 +3,7 @@ package Letter;
 import courrierProject.Inhabitant;
 import Content.Money;
 
-public class PromissoryNote extends SimpleLetter<Money> {
+public class PromissoryNote extends SimpleContentLetter<Money> {
 	
 	protected int amount ; // amount of money in the letter
 
@@ -21,6 +21,11 @@ public class PromissoryNote extends SimpleLetter<Money> {
 	public int getCost() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public String letterType() {
+		return "promissory note letter";
 	}
 
 }
