@@ -20,10 +20,8 @@ public abstract class SimpleContentLetter<S extends SimpleContent> extends Lette
 		
 	}
 
-	@Override
-	public int getCost() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int contentValue (){
+		return content.contentValue();
 	}
 
 }

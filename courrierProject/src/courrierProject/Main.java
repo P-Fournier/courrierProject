@@ -18,9 +18,9 @@ public class Main {
 		}
 		
 		int numberOfDays = 6 ;
-		
+		while(!city.postboxEmty()&&numberOfDays>0)
 		for (int i=0 ; i<=numberOfDays ; i++){
-			if (i!=numberOfDays){
+			if (numberOfDays>0){
 			
 				/*
 				 * create a list of inhabitants randomly choose

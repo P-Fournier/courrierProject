@@ -10,5 +10,8 @@ public abstract class SpecialLetter<U extends UrgentContent> extends Letter<U> {
 			U content) {
 		super(sender, receiver, content);
 	}
-
+	
+	public int contentValue (){
+		return content.contentValue();
+	}
 }

@@ -52,6 +52,10 @@ public abstract class Letter<C extends Content> {
 	 */
 	public abstract String letterType ();
 
+	public int totalCost (){
+		return getCost()+content.contentValue();
+	}
+	
 	public abstract void doAction();
 	
 	public abstract int getCost();

@@ -10,7 +10,7 @@ public class ThanksLetter extends SimpleLetter{
 	
 	@Override
 	public String letterType(){
-		return "thanks letter which is a "+super.letterType();
+		return "a thanks letter which is a "+super.letterType();
 	}
 
 }

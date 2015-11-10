@@ -37,8 +37,28 @@ public class City {
 		}
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Letter<?>> getPostbox() {
+		return postbox;
+	}
+
+	public void setPostbox(List<Letter<?>> postbox) {
+		this.postbox = postbox;
+	}
+
 	public boolean sameCity (Letter<?> letter){
 		return equals(letter.getReceiver().getCity());
+	}
+
+	public boolean postboxEmty() {
+		return postbox.isEmpty();
 	}
 	
 	

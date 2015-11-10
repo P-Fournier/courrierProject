@@ -20,6 +20,11 @@ public class Text implements SimpleContent {
 	public String description() {
 		return "text content ("+content+")";
 	}
+
+	@Override
+	public int contentValue() {
+		return 0;
+	}
 	
 	
 

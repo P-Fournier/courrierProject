@@ -90,8 +90,20 @@ public class Inhabitant {
 	/**
 	 * send the letter past in parameter 
 	 * @param letter sent
+	 * @throws ExpeditionException 
 	 */
-	public void sendLetter (Letter<?> letter){
+	public void sendLetter (Letter<?> letter) throws ExpeditionException{
+		if (!letter.getSender().equals(this)){
+			throw new ExpeditionException("not the good sender");
+		}
+		if (letter.totalCost()>this.bankAccount){
+			throw new ExpeditionException ("bank account not compatible with the letter cost");
+		}
+		System.out.println(this+" mails "+letter.description()+" to "+
+				letter.getSender()+" for a cost of "+letter.getCost()+" euros");
+		this.bankAccount -= letter.getCost();
+		this.city.getPostbox().add(letter);
+		System.out.println(letter.getCost()+" euros are debited from "+this+" account whose balance is now "+this.bankAccount);
 		
 	}
 	
@@ -99,27 +111,36 @@ public class Inhabitant {
 	 * create a letter of a random type
 	 * @param receiver the letter's receiver
 	 * @return letter created
+	 * @throws ExpeditionException 
 	 */
-	public Letter<?> createRandomLetter(Inhabitant receiver){
+	public Letter<?> createRandomLetter(Inhabitant receiver) throws ExpeditionException{
 		int randomChoose = (int) Math.random()* 3;
+		Letter <?> create ;
 		switch(randomChoose) {
 		case 0:
 			/*
 			 * create a simpleContentLetter
 			 */
-			return (Letter<?>)createSimpleContentLetter(receiver);
+			create = (Letter<?>)createSimpleContentLetter(receiver);
+			break;
 		case 1:
 			/*
 			 * create a RegisteredLetter
 			 */
-			return (Letter<?>)createUrgentableLetter(receiver) ;
+			create = (Letter<?>)createUrgentableLetter(receiver) ;
+			break;
 		case 2:
 			/*
 			 * create a UrgentLetter
 			 */
-			return new UrgentLetter<UrgentContent>(this,receiver,createUrgentableLetter(receiver));
+			create = new UrgentLetter<UrgentContent>(this,receiver,createUrgentableLetter(receiver));
 		default:
 			throw new RuntimeException ("there is a probleme with a random number creation");
+		}
+		if (create.totalCost()<=bankAccount){
+			return create;
+		}else{
+			throw new ExpeditionException("the letter you tried to create is to much expensive for you");
 		}
 	}
 	/**

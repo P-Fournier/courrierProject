@@ -20,4 +20,9 @@ public class Money implements SimpleContent {
 		return "money content ("+amount+")";
 	}
 
+	@Override
+	public int contentValue() {
+		return amount ;
+	}
+
 }

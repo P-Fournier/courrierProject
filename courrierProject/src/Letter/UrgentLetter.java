@@ -18,13 +18,12 @@ public class UrgentLetter<U extends UrgentContent> extends SpecialLetter<U>{
 
 	@Override
 	public int getCost() {
-		// TODO Auto-generated method stub
-		return 0;
+		return content.getCost()*2;
 	}
 
 	@Override
 	public String letterType() {
-		return "urgent letter";
+		return "an urgent letter";
 	}
 
 }

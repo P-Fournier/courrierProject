@@ -19,13 +19,12 @@ public class RegisteredLetter<R extends RegisterableContent> extends SpecialLett
 
 	@Override
 	public int getCost() {
-		// TODO Auto-generated method stub
-		return 0;
+		return content.getCost()+15;
 	}
 
 	@Override
 	public String letterType() {
-		return "registered letter";
+		return "a registered letter";
 	}
 
 }

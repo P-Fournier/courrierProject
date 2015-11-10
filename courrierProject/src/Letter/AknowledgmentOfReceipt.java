@@ -11,7 +11,7 @@ public class AknowledgmentOfReceipt<R extends RegisterableContent> extends Simpl
 	
 	@Override
 	public String letterType(){
-		return "aknowledgment of receipt which is a "+super.letterType();
+		return "an aknowledgment of receipt which is a "+super.letterType();
 	}
 
 }
