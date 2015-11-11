@@ -19,8 +19,7 @@ public class PromissoryNote extends SimpleLetter<Money> {
 
 	@Override
 	public int getCost() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1+(this.amount/100);
 	}
 
 }

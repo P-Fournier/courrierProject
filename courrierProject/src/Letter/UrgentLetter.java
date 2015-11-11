@@ -19,8 +19,7 @@ public class UrgentLetter<U extends UrgentContent> extends SpecialLetter<UrgentC
 
 	@Override
 	public int getCost() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.content.getCost() *2;
 	}
 
 }
