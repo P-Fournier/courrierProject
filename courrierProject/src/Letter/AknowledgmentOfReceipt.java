@@ -1,11 +1,10 @@
 package Letter;
 
-import Content.RegisterableContent;
 import Content.Text;
 
-public class AknowledgmentOfReceipt<R extends RegisterableContent> extends SimpleLetter {
+public class AknowledgmentOfReceipt extends SimpleLetter {
 
-	public AknowledgmentOfReceipt( RegisteredLetter<R> recept) {
+	public AknowledgmentOfReceipt( RegisteredLetter recept) {
 		super(recept.getReceiver(),recept.getSender(), new Text("aknowledgment of receipt for a "+recept.description()));
 	}
 	

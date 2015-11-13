@@ -1,5 +1,6 @@
 package Letter;
 
+
 import courrierProject.Inhabitant;
 import Content.Content;
 
@@ -56,7 +57,32 @@ public abstract class Letter<C extends Content> {
 		return getCost()+content.contentValue();
 	}
 	
-	public abstract void doAction();
+	/**
+	 * the inhabitant receive the letter 
+	 */
+	public void receive (){
+		System.out.println("<- "+this.receiver+" receives "+this.description()+" from "+
+	this.sender);
+		this.doAction();
+	}
+	
+	/**
+	 * send the letter to his receiver 
+	 * @throws ExpeditionException 
+	 */
+	public void send () {
+		if (totalCost()>receiver.getBankAccount()){
+			System.out.println (sender+" can't send "+this.description()+" because "
+					+ "he havn't enough of money");
+		}else{
+			System.out.println("-> "+this.sender+" mails "+this.description()+" to "+
+				this.receiver+" for a cost of "+this.getCost()+" euros");
+			sender.debit(this.getCost());
+			sender.getCity().getPostbox().add(this);
+	
+		}
+	}
+	public abstract void doAction()  ;
 	
 	public abstract int getCost();
 	

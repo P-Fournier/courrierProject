@@ -11,14 +11,6 @@ public abstract class SimpleContentLetter<S extends SimpleContent> extends Lette
 	public SimpleContentLetter(Inhabitant sender, Inhabitant receiver, S content) {
 		super(sender, receiver, content);
 	}
-	
-	
-	
-	@Override
-	public void doAction() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public int contentValue (){
 		return content.contentValue();

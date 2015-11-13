@@ -3,17 +3,11 @@ package Letter;
 import courrierProject.Inhabitant;
 import Content.UrgentContent;
 
-public class UrgentLetter<U extends UrgentContent> extends SpecialLetter<U>{
+public class UrgentLetter extends SpecialLetter<UrgentContent>{
 
 	public UrgentLetter(Inhabitant sender, Inhabitant receiver,
-			U content) {
+			UrgentContent content) {
 		super(sender, receiver, content);
-	}
-
-	@Override
-	public void doAction() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

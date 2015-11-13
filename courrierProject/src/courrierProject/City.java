@@ -6,9 +6,9 @@ import java.util.List;
 import Letter.Letter;
 
 public class City {
-	
+
 	protected String name ;		//	Name of the city
-	protected List<Letter<?>> postbox;		//	Postbox with the letter waiting for sending of the city
+	protected ArrayList<Letter<?>> postbox;		//	Postbox with the letter waiting for sending of the city
 	
 	/**
 	 * create a new city 
@@ -32,8 +32,10 @@ public class City {
 	 * to the city of destination
 	 */
 	public void distributeLetters(){
-		for (Letter<?> l : postbox){
-			
+		ArrayList<Letter<?>> postalMan = new ArrayList<Letter<?>>(postbox);
+		for (Letter<?> l : postalMan){
+			postbox.remove(l);
+			l.receive();
 		}
 	}
 	
@@ -49,7 +51,7 @@ public class City {
 		return postbox;
 	}
 
-	public void setPostbox(List<Letter<?>> postbox) {
+	public void setPostbox(ArrayList<Letter<?>> postbox) {
 		this.postbox = postbox;
 	}
 
@@ -59,6 +61,11 @@ public class City {
 
 	public boolean postboxEmty() {
 		return postbox.isEmpty();
+	}
+	
+	@Override
+	public String toString() {
+		return name ;
 	}
 	
 	

@@ -4,17 +4,18 @@ import Content.RegisterableContent;
 import Content.UrgentContent;
 import courrierProject.Inhabitant;
 
-public class RegisteredLetter<R extends RegisterableContent> extends SpecialLetter<R> implements UrgentContent {
+public class RegisteredLetter extends SpecialLetter<RegisterableContent> implements UrgentContent {
 
 	public RegisteredLetter(Inhabitant sender, Inhabitant receiver,
-			R content) {
+			RegisterableContent content) {
 		super(sender, receiver, content);
 	}
 
 	@Override
-	public void doAction() {
-		// TODO Auto-generated method stub
-		
+	public void doAction()   {
+		super.doAction();
+		AknowledgmentOfReceipt aknowledgment = new AknowledgmentOfReceipt(this);
+		aknowledgment.send();
 	}
 
 	@Override

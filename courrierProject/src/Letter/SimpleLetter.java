@@ -20,4 +20,9 @@ public class SimpleLetter extends SimpleContentLetter<Text>{
 	public int getCost() {
 		return cost ;
 	}
+
+	@Override
+	public void doAction() {
+		
+	}
 }

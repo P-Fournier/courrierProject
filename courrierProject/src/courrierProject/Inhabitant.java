@@ -72,6 +72,7 @@ public class Inhabitant {
 			throw new IllegalArgumentException();
 		}else{
 			this.bankAccount += amount ;
+			System.out.println("  + "+this+" account is credited with "+amount+" euros ;  its balance is now "+this.bankAccount);
 		}
 	}
 	
@@ -79,42 +80,30 @@ public class Inhabitant {
 	 * dedit the inhabitant's bank account of the amount
 	 * @param amount substract to the bank account
 	 */
-	public void dedit (int amount){
-		if (amount<=0){
+	public void debit (int amount){
+		if ((amount<=0)&&(amount>bankAccount)){
 			throw new IllegalArgumentException();
 		}else{
 			this.bankAccount -= amount ;
+			System.out.println("  - "+amount+" euros are debited from "+this+" account whose balance is now "+this.bankAccount);
 		}
 	}
 	
-	/**
-	 * send the letter past in parameter 
-	 * @param letter sent
-	 * @throws ExpeditionException 
-	 */
-	public void sendLetter (Letter<?> letter) throws ExpeditionException{
-		if (!letter.getSender().equals(this)){
-			throw new ExpeditionException("not the good sender");
-		}
-		if (letter.totalCost()>this.bankAccount){
-			throw new ExpeditionException ("bank account not compatible with the letter cost");
-		}
-		System.out.println(this+" mails "+letter.description()+" to "+
-				letter.getSender()+" for a cost of "+letter.getCost()+" euros");
-		this.bankAccount -= letter.getCost();
-		this.city.getPostbox().add(letter);
-		System.out.println(letter.getCost()+" euros are debited from "+this+" account whose balance is now "+this.bankAccount);
-		
-	}
 	
+	
+	@Override
+	public String toString() {
+		return name ;
+	}
+
 	/**
 	 * create a letter of a random type
 	 * @param receiver the letter's receiver
 	 * @return letter created
 	 * @throws ExpeditionException 
 	 */
-	public Letter<?> createRandomLetter(Inhabitant receiver) throws ExpeditionException{
-		int randomChoose = (int) Math.random()* 3;
+	public Letter<?> createRandomLetter(Inhabitant receiver) {
+		int randomChoose = (int) (Math.random()* 3);
 		Letter <?> create ;
 		switch(randomChoose) {
 		case 0:
@@ -133,15 +122,12 @@ public class Inhabitant {
 			/*
 			 * create a UrgentLetter
 			 */
-			create = new UrgentLetter<UrgentContent>(this,receiver,createUrgentableLetter(receiver));
+			create = new UrgentLetter(this,receiver,createUrgentableLetter(receiver));
+			break;
 		default:
 			throw new RuntimeException ("there is a probleme with a random number creation");
 		}
-		if (create.totalCost()<=bankAccount){
-			return create;
-		}else{
-			throw new ExpeditionException("the letter you tried to create is to much expensive for you");
-		}
+		return create;
 	}
 	/**
 	 * create a letter that urgent letter could content
@@ -149,7 +135,7 @@ public class Inhabitant {
 	 * @return the created letter
 	 */
 	public UrgentContent createUrgentableLetter(Inhabitant receiver) {
-		int randomChoose = (int) Math.random()* 2;
+		int randomChoose = (int) (Math.random()* 2);
 		switch(randomChoose) {
 		case 0:
 			/*
@@ -160,7 +146,7 @@ public class Inhabitant {
 			/*
 			 * create a RegisteredLetter
 			 */
-			return new RegisteredLetter<RegisterableContent>(this,receiver,createSimpleContentLetter(receiver)) ;
+			return new RegisteredLetter(this,receiver,createSimpleContentLetter(receiver)) ;
 		default:
 			throw new RuntimeException ("there is a probleme with a random number creation");
 		}
@@ -172,13 +158,14 @@ public class Inhabitant {
 	 * @return the letter created
 	 */
 	public RegisterableContent createSimpleContentLetter(Inhabitant receiver){
-		int randomChoose = (int) Math.random()* 4;
+		int randomChoose = (int) (Math.random()* 2);
+		
 		switch (randomChoose){
 		case 0:
 			/*
 			 * create a promissory note
 			 */
-			int amount = (int) Math.random()*bankAccount;
+			int amount = (int) ((Math.random()*(500-1))+1);
 			Money money = new Money (amount);
 			return new PromissoryNote (this,receiver,money);
 		case 1:
@@ -190,13 +177,5 @@ public class Inhabitant {
 		default:
 			throw new RuntimeException ("there is a probleme with a random number creation");
 		}
-	}
-	
-	/**
-	 * receive the letter past in parameter
-	 * @param letter received
-	 */
-	public void receiveLetter(Letter<?> letter){
-		
 	}
 }

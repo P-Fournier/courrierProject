@@ -10,49 +10,43 @@ public class Main {
 	public static void main (String [] args){
 		
 		City city = new City("Lille-Rouen-Orléans");
+		System.out.println("Creating "+city);
+		
 		List<Inhabitant> inhabitants = new ArrayList<Inhabitant>();
 		int numberOfInhabitants = 100;
-		
 		for (int i=0 ; i<numberOfInhabitants ;i++){
 			inhabitants.add(new Inhabitant("inhabitant-"+i,city));
 		}
+		System.out.println("Creating "+numberOfInhabitants);
 		
 		int numberOfDays = 6 ;
-		while(!city.postboxEmty()&&numberOfDays>0)
-		for (int i=0 ; i<=numberOfDays ; i++){
-			if (numberOfDays>0){
-			
+		System.out.println("Mailing letters for "+numberOfDays+" days");
+		
+		int currentDays= 1;
+		
+		while (currentDays<=numberOfDays || !city.postboxEmty()){
+			System.out.println("*************************************");
+			System.out.println("Day "+currentDays);
+			city.distributeLetters();
+			if (currentDays<=numberOfDays){
+				
 				/*
-				 * create a list of inhabitants randomly choose
+				 * create a list of inhabitants randomly choose to send a letter
 				 */
 		
-				int randomNumberOfInhabitants = (int) (Math.random()*numberOfInhabitants);
-				List<Inhabitant> inhabitantsChoose = new ArrayList<Inhabitant>();
+				int randomNumberOfInhabitants = (int) (Math.random()*9)+1;
 				for (int j=0 ; j<randomNumberOfInhabitants ;j++){
 					int randomIndexInhabitant = (int) (Math.random()*(inhabitants.size()-1));
-					inhabitantsChoose.add(inhabitants.remove(randomIndexInhabitant));
-				}
-				/*
-				 * On remet les habitants choisit dans la liste d'habitants
-				 */
-		
-				inhabitants.addAll(inhabitantsChoose);
-				for (int j=0 ; j<inhabitantsChoose.size();j++){
-					/*
-					 * on va choisir un type de lettre au hasard qu'on va ensuite expédier
-					 * à un autre habitant au hasard
-					 */
-					Inhabitant sender = inhabitantsChoose.get(j);
-					Inhabitant receiver ;
-					do {
-						int randomIndexInhabitant = (int) (Math.random()*(inhabitants.size()-1));
-						receiver = inhabitants.get(randomIndexInhabitant);
-					}while (sender.equals(receiver));
+					Inhabitant sender = inhabitants.remove(randomIndexInhabitant);
+					randomIndexInhabitant = (int) (Math.random()*(inhabitants.size()-1));
+					Inhabitant receiver = inhabitants.remove(randomIndexInhabitant);
 					Letter<?> create = sender.createRandomLetter(receiver);
-					sender.sendLetter(create);
-				}
-				
+					create.send();
+					inhabitants.add(sender);
+					inhabitants.add(receiver);
+				} 	
 			}
+			currentDays++;
 		}
 		
 		

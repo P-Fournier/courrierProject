@@ -14,4 +14,8 @@ public abstract class SpecialLetter<U extends UrgentContent> extends Letter<U> {
 	public int contentValue (){
 		return content.contentValue();
 	}
+	
+	public void doAction()  {
+		content.doAction();
+	}
 }
