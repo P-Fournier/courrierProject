@@ -5,15 +5,23 @@ import courrierProject.Inhabitant;
 import Content.Content;
 
 public abstract class Letter<C extends Content> {
-	protected Inhabitant sender;
-	protected Inhabitant receiver;
-	protected C content ;
+	protected Inhabitant sender;	// inhabitant who send the letter
+	protected Inhabitant receiver;	// inhabitant who receive the letter
+	protected C content ;	// the content of the letter 
 	
+	/**
+	 * create a letter 
+	 * @param sender represent the inhabitant who send the letter
+	 * @param receiver represent the inhabitant who receive the letter
+	 * @param content represent the content of the letter
+	 */
 	public Letter(Inhabitant sender , Inhabitant receiver , C content) {
 		this.sender = sender;
 		this.receiver = receiver;
 		this.content = content ;
 	}
+	
+	// begin getters and setters
 	
 	public Inhabitant getSender() {
 		return sender;
@@ -38,6 +46,8 @@ public abstract class Letter<C extends Content> {
 	public void setContent(C content) {
 		this.content = content;
 	}
+	
+	// end getters and setters
 
 	/**
 	 * give a description of the letter
@@ -53,6 +63,10 @@ public abstract class Letter<C extends Content> {
 	 */
 	public abstract String letterType ();
 
+	/**
+	 * calculate the total cost of the letter and his content
+	 * @return the value of the total cost
+	 */
 	public int totalCost (){
 		return getCost()+content.contentValue();
 	}
@@ -67,10 +81,12 @@ public abstract class Letter<C extends Content> {
 	}
 	
 	/**
-	 * send the letter to his receiver 
-	 * @throws ExpeditionException 
+	 * send the letter to his receiver if it's possible 
 	 */
 	public void send () {
+		if (sender.equals(receiver)){
+			throw new RuntimeException("receiver and sender are the same personne");
+		}
 		if (totalCost()>receiver.getBankAccount()){
 			System.out.println (sender+" can't send "+this.description()+" because "
 					+ "he havn't enough of money");
@@ -82,8 +98,24 @@ public abstract class Letter<C extends Content> {
 	
 		}
 	}
+	
+	/**
+	 * the action to do when the letter is receive
+	 */
 	public abstract void doAction()  ;
 	
+	/**
+	 * calculate the letter's expedition cost
+	 * @return expedition cost
+	 */
 	public abstract int getCost();
+	
+	/**
+	 * give the total value of this content
+	 * @return the value of the content
+	 */
+	public int contentValue (){
+		return content.contentValue();
+	}
 	
 }

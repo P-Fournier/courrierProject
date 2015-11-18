@@ -39,6 +39,8 @@ public class City {
 		}
 	}
 	
+	// begin getters and setters
+	
 	public String getName() {
 		return name;
 	}
@@ -55,10 +57,12 @@ public class City {
 		this.postbox = postbox;
 	}
 
-	public boolean sameCity (Letter<?> letter){
-		return equals(letter.getReceiver().getCity());
-	}
+	// end getters and setters 
 
+	/**
+	 * test is the postbox is empty
+	 * @return true if the postbox is empty
+	 */
 	public boolean postboxEmty() {
 		return postbox.isEmpty();
 	}

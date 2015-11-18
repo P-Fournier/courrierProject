@@ -6,6 +6,12 @@ import courrierProject.Inhabitant;
 
 public class RegisteredLetter extends SpecialLetter<RegisterableContent> implements UrgentContent {
 
+	/**
+	 * create a registered letter  
+	 * @param sender represent the inhabitant who send the letter
+	 * @param receiver represent the inhabitant who receive the letter
+	 * @param content represent the content of the letter
+	 */
 	public RegisteredLetter(Inhabitant sender, Inhabitant receiver,
 			RegisterableContent content) {
 		super(sender, receiver, content);

@@ -39,6 +39,8 @@ public class Inhabitant {
 		this.bankAccount = 5000;
 	}
 	
+	// begin getters and setters 
+	
 	public String getName() {
 		return name;
 	}
@@ -63,6 +65,9 @@ public class Inhabitant {
 		this.bankAccount = bankAccount;
 	}
 
+	// end getters and setters 
+	
+	
 	/**
 	 * credit the inhabitant's bank account of the amount
 	 * @param amount add to the bank account
@@ -82,14 +87,13 @@ public class Inhabitant {
 	 */
 	public void debit (int amount){
 		if ((amount<=0)&&(amount>bankAccount)){
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("You tried to debit an invalid amount"
+					+ " : "+amount+" , bank account : "+bankAccount);
 		}else{
 			this.bankAccount -= amount ;
 			System.out.println("  - "+amount+" euros are debited from "+this+" account whose balance is now "+this.bankAccount);
 		}
 	}
-	
-	
 	
 	@Override
 	public String toString() {
@@ -99,8 +103,7 @@ public class Inhabitant {
 	/**
 	 * create a letter of a random type
 	 * @param receiver the letter's receiver
-	 * @return letter created
-	 * @throws ExpeditionException 
+	 * @return letter created 
 	 */
 	public Letter<?> createRandomLetter(Inhabitant receiver) {
 		int randomChoose = (int) (Math.random()* 3);

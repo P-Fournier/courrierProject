@@ -5,15 +5,25 @@ import Content.RegisterableContent;
 import Content.SimpleContent;
 
 public abstract class SimpleContentLetter<S extends SimpleContent> extends Letter<S> implements RegisterableContent{
-	
-	protected int cost = 1 ; // sending cost of a simple letter
 
+	/**
+	 * create a simple content letter
+	 * @param sender represent the inhabitant who send the letter
+	 * @param receiver represent the inhabitant who receive the letter
+	 * @param content represent the content of the letter
+	 */
 	public SimpleContentLetter(Inhabitant sender, Inhabitant receiver, S content) {
 		super(sender, receiver, content);
 	}
-
-	public int contentValue (){
-		return content.contentValue();
-	}
+	
+	@Override
+	public abstract void doAction();
+	
+	@Override
+	public abstract String letterType();
+	
+	@Override
+	public abstract int getCost();
+	
 
 }

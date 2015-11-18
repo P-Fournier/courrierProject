@@ -5,6 +5,12 @@ import Content.Money;
 
 public class PromissoryNote extends SimpleContentLetter<Money> {
 
+	/**
+	 * create a promissory note
+	 * @param sender represent the inhabitant who send the letter
+	 * @param receiver represent the inhabitant who receive the letter
+	 * @param content represent the content of the letter
+	 */
 	public PromissoryNote(Inhabitant sender, Inhabitant receiver, Money content) {
 		super(sender, receiver, content);
 		
