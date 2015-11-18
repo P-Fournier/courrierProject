@@ -34,4 +34,9 @@ public class RegisteredLetter extends SpecialLetter<RegisterableContent> impleme
 		return "a registered letter";
 	}
 
+	@Override
+	public int getValue() {
+		return content.getValue();
+	}
+
 }

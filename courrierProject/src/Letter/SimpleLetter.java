@@ -31,4 +31,9 @@ public class SimpleLetter extends SimpleContentLetter<Text>{
 	public void doAction() {
 		
 	}
+
+	@Override
+	public int getValue() {
+		return content.getValue();
+	}
 }

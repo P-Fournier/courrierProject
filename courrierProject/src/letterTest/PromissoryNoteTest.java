@@ -1,12 +1,12 @@
 package letterTest;
 
-import static org.junit.Assert.*;
+
 
 import org.junit.Test;
 
 import courrierProject.City;
 import Content.Money;
-
+import Letter.Letter;
 import Letter.PromissoryNote;
 
 public class PromissoryNoteTest extends SimpleContentLetterTest<Money> {
@@ -21,10 +21,34 @@ public class PromissoryNoteTest extends SimpleContentLetterTest<Money> {
 		Money moneyTest = new Money (amount);
 		return new PromissoryNote (inhabitantSender,inhabitantReceiver,moneyTest);
 	}
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
+
+	@Override
+	public Letter<Money> createLetterWithSenderIsReceiver() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	@Test
+	@Override
+	public void testLetterType() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Test
+	@Override
+	public void testDoAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Test
+	@Override
+	public void testGetCost() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	
 }

@@ -10,5 +10,5 @@ public interface Content {
 	 * give the total value of this content
 	 * @return the value of the content
 	 */
-	public int contentValue ();
+	public int getValue ();
 }

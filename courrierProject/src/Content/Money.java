@@ -29,7 +29,7 @@ public class Money implements SimpleContent {
 	}
 
 	@Override
-	public int contentValue() {
+	public int getValue() {
 		return amount ;
 	}
 

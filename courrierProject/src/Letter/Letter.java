@@ -68,7 +68,7 @@ public abstract class Letter<C extends Content> {
 	 * @return the value of the total cost
 	 */
 	public int totalCost (){
-		return getCost()+content.contentValue();
+		return getCost()+contentValue();
 	}
 	
 	/**
@@ -115,7 +115,7 @@ public abstract class Letter<C extends Content> {
 	 * @return the value of the content
 	 */
 	public int contentValue (){
-		return content.contentValue();
+		return content.getValue();
 	}
 	
 }

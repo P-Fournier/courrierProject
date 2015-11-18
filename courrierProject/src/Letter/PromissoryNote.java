@@ -34,4 +34,9 @@ public class PromissoryNote extends SimpleContentLetter<Money> {
 		return "promissory note letter";
 	}
 
+	@Override
+	public int getValue() {
+		return content.getValue();
+	}
+
 }

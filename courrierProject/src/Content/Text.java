@@ -30,7 +30,7 @@ public class Text implements SimpleContent {
 	}
 
 	@Override
-	public int contentValue() {
+	public int getValue() {
 		return 0;
 	}
 	

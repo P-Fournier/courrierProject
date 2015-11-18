@@ -24,7 +24,7 @@ public class MockRegisterableContent implements RegisterableContent {
 	}
 
 	@Override
-	public int contentValue() {
+	public int getValue() {
 		return 0;
 	}
 
