@@ -1,7 +1,7 @@
 package Letter;
 
 import Content.UrgentContent;
-import courrierProject.Inhabitant;
+import CourrierProject.Inhabitant;
 
 
 public abstract class SpecialLetter<U extends UrgentContent> extends Letter<U> {
@@ -19,6 +19,9 @@ public abstract class SpecialLetter<U extends UrgentContent> extends Letter<U> {
 	
 	@Override
 	public void doAction()  {
+		if (!sender.solvable(content.getValue())){
+			throw new RuntimeException ("not enough money to pay for content");
+		}
 		content.doAction();
 	}
 	

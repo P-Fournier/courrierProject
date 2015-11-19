@@ -1,11 +1,11 @@
 package Letter;
 
-import courrierProject.Inhabitant;
 import Content.Text;
+import CourrierProject.Inhabitant;
 
 public class SimpleLetter extends SimpleContentLetter<Text>{
 
-	protected int cost = 1;  // expedition's cost
+	public int cost = 1;  // expedition's cost
 	
 	/**
 	 * create a simple letter

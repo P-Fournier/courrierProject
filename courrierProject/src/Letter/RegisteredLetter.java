@@ -2,7 +2,7 @@ package Letter;
 
 import Content.RegisterableContent;
 import Content.UrgentContent;
-import courrierProject.Inhabitant;
+import CourrierProject.Inhabitant;
 
 public class RegisteredLetter extends SpecialLetter<RegisterableContent> implements UrgentContent {
 

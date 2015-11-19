@@ -1,8 +1,8 @@
 package Letter;
 
 
-import courrierProject.Inhabitant;
 import Content.Content;
+import CourrierProject.Inhabitant;
 
 public abstract class Letter<C extends Content> {
 	protected Inhabitant sender;	// inhabitant who send the letter
@@ -87,7 +87,7 @@ public abstract class Letter<C extends Content> {
 		if (sender.equals(receiver)){
 			throw new RuntimeException("receiver and sender are the same personne");
 		}
-		if (totalCost()>receiver.getBankAccount()){
+		if (!sender.solvable(totalCost())){
 			System.out.println (sender+" can't send "+this.description()+" because "
 					+ "he havn't enough of money");
 		}else{

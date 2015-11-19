@@ -1,4 +1,4 @@
-package courrierProject;
+package CourrierProject;
 
 import Content.Money;
 import Content.RegisterableContent;
@@ -11,7 +11,7 @@ import Letter.SimpleLetter;
 import Letter.UrgentLetter;
 
 public class Inhabitant {
-	
+
 	protected String name ; //inhabitant's name
 	protected City city ; //inhabitant's city
 	protected int bankAccount ; //credit of the inhabitant's bank account
@@ -82,11 +82,20 @@ public class Inhabitant {
 	}
 	
 	/**
+	 * test if the inhabitant is solvable for the amount past in parameter
+	 * @param amount which is tried
+	 * @return true if the inhabitant is solvable
+	 */
+	public boolean solvable (int amount){
+		return amount<=bankAccount ;
+	}
+	
+	/**
 	 * dedit the inhabitant's bank account of the amount
 	 * @param amount substract to the bank account
 	 */
 	public void debit (int amount){
-		if ((amount<=0)&&(amount>bankAccount)){
+		if ((amount<=0)||(!solvable(amount))){
 			throw new IllegalArgumentException("You tried to debit an invalid amount"
 					+ " : "+amount+" , bank account : "+bankAccount);
 		}else{
@@ -181,4 +190,5 @@ public class Inhabitant {
 			throw new RuntimeException ("there is a probleme with a random number creation");
 		}
 	}
+	
 }

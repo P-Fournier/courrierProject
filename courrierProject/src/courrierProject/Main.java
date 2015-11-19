@@ -1,4 +1,4 @@
-package courrierProject;
+package CourrierProject;
 
 import java.util.ArrayList;
 import java.util.List;

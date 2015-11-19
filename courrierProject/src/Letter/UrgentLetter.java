@@ -1,7 +1,7 @@
 package Letter;
 
-import courrierProject.Inhabitant;
 import Content.UrgentContent;
+import CourrierProject.Inhabitant;
 
 public class UrgentLetter extends SpecialLetter<UrgentContent>{
 

@@ -1,8 +1,8 @@
 package Letter;
 
-import courrierProject.Inhabitant;
 import Content.RegisterableContent;
 import Content.SimpleContent;
+import CourrierProject.Inhabitant;
 
 public abstract class SimpleContentLetter<S extends SimpleContent> extends Letter<S> implements RegisterableContent{
 

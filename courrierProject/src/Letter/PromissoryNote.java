@@ -1,7 +1,7 @@
 package Letter;
 
-import courrierProject.Inhabitant;
 import Content.Money;
+import CourrierProject.Inhabitant;
 
 public class PromissoryNote extends SimpleContentLetter<Money> {
 
@@ -18,6 +18,9 @@ public class PromissoryNote extends SimpleContentLetter<Money> {
 
 	@Override
 	public void doAction() {
+		if (!sender.solvable(content.getAmount())){
+			throw new RuntimeException("not enough money for this letter !");
+		}
 		sender.debit(content.getAmount());
 		receiver.credit(content.getAmount());
 		ThanksLetter thanks = new ThanksLetter(this);

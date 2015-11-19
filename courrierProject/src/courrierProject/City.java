@@ -1,4 +1,4 @@
-package courrierProject;
+package CourrierProject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +17,6 @@ public class City {
 	public City (String name){
 		this.name = name;
 		this.postbox = new ArrayList<Letter<?>>();
-	}
-	
-	/**
-	 * send of the letter in the destination city
-	 * @param letter sent
-	 */
-	public void sendLetter(Letter<?> letter){
-		
 	}
 	
 	/**
